@@ -22,6 +22,7 @@ Before you begin, ensure you have the following:
 - An **AWS account**
 - A **t2.medium EC2 instance** for deployment
 - **Docker** and **Docker Compose** installed
+- (I already used vagrant box my local environment)
 
 ## Key Features
 

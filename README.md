@@ -1,6 +1,6 @@
 
 # Dockerized Banking Application
-![](./images/Screenshot%202024-10-28%20at%2011.19.51 AM.png)
+![](./images/banking-app%20docker%20deployment.png)
 
 ## Overview
 
@@ -86,7 +86,7 @@ For a comprehensive walkthrough of the setup and deployment, refer to my blog po
 
 ## Implementation Notes
 
-For detailed implementation notes with images, visit my Notion page: [Notion Notes](./)
+For detailed implementation notes with images, visit my Notion page: [Notion Notes](https://devops-learning-space.notion.site/Dockerized-Banking-Application-Bank-app-project-12db0c29052f80b89ebec81796ae7f33?pvs=4)
 
 
 ## Acknowledgments

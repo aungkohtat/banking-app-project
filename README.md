@@ -1,5 +1,6 @@
 
 # Dockerized Banking Application
+![](./images/Screenshot%202024-10-28%20at%2011.19.51 AM.png)
 
 ## Overview
 

@@ -1,0 +1,44 @@
+version: "3.8"
+
+services:
+  # MySQL database service
+  mysql:
+    image: mysql:latest
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: Test@123           # Root password for MySQL
+      MYSQL_DATABASE: BankDB                  # Name of the database to create
+    volumes:
+      - mysql-bankapp:/var/lib/mysql          # Persistent storage for MySQL data
+    networks:
+      - bankapp                               # Network for communication between services
+    restart: always
+    healthcheck:                              # Healthcheck to ensure MySQL is ready
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-pTest@123"]
+      interval: 10s                           # Interval between health checks
+      timeout: 5s                             # Timeout for health check
+      retries: 3                              # Retry count before marking as unhealthy
+      start_period: 30s                       # Initial delay before health check starts
+
+  # Spring Boot application service (BankApp)
+  bankapp:
+    image: bankapp-mini                      # Specify the image for the BankApp
+    container_name: bankapp-mini
+    environment:
+      SPRING_DATASOURCE_USERNAME: root        # Database username
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/BankDB?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_PASSWORD: Test@123    # Database password
+    ports:
+      - "8080:8080"                           # Expose the application on port 8080
+    depends_on:
+      - mysql                                 # Ensure MySQL starts before BankApp
+    networks:
+      - bankapp                               # Network for communication with MySQL
+    restart: always
+
+volumes:
+  mysql-bankapp:                              # Volume for persistent MySQL data
+
+networks:
+  bankapp:                                    # Network for services communication
+
